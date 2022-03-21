@@ -5,12 +5,10 @@ from datetime import datetime
 
 def main():
     result = os.popen("az storage account list --query '[].{name:name}'").read()
-    
     accounts = json.loads(result)
 
     for index, account in enumerate(accounts):
         print(f"{index+1}: {account['name']}")
-
     
     account_number = int(input("Account number: "))
     account_name = accounts[account_number - 1]["name"]
